@@ -1,0 +1,21 @@
+{
+  "name": "sandisk-cucumber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cucumber": "^5.1.0",
+    "protractor": "^5.4.2",
+    "string-format": "^2.0.0",
+    "expect": "^24.9.0"
+  },
+  "devDependencies": {
+    "protractor-cucumber-framework": "^6.1.3"
+  }
+}
