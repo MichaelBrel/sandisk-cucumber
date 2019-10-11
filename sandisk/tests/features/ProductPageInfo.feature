@@ -20,3 +20,15 @@ Feature: Checking the correctness of information on the product page
         Examples:
             | chosenProduct                | productCapacity |
             | SanDisk Extreme Portable SSD | 250 GB          |
+
+    Scenario Outline: Checking the correctness of switching region
+        Given User opens main page
+        When User clicks SSD reference
+        And User clicks learn more button of a "<chosenProduct>"
+        And User chooses "<region>" where to buy sandisk
+        And User chooses "<area>"
+        Then User checks that "<distributorName>" is displayed correctly
+
+        Examples:
+            | chosenProduct                | region | area    | distributorName |
+            | SanDisk Extreme Portable SSD | Europe | Belarus | ASBIS CJSC      |
