@@ -15,6 +15,10 @@ class ProductPage {
         this.areaDropDown = element(by.css("#country-box"));
         this.areaChoiceXpath = "//*[@id='country-box']//option[contains(text(),'{}')]";
         this.firstDistributor = element(by.css(".address.ng-scope h4"));
+        this.findLocalButton = element(by.xpath("//div[@style='display: block;']//*[contains(text(),'Find Local')]"));
+        this.findLocalProductCapacityButtonXpath = "//*[@class='ps-capacity-menu ps-float-box']//*[contains(text(),'{}')]";
+        this.findLocalProductCapacityXpath = "//*[@class='ps-capacity-header'][contains(text(),'{}')]";
+
     }
 
     getProductTitle() {
@@ -50,6 +54,29 @@ class ProductPage {
         return wait.waitElementToBeVisible(this.firstDistributor)
             .then(() => {
                 return this.firstDistributor.getText();
+            })
+    }
+
+    clickFindLocalButton() {
+        return wait.waitElementToBeClickable(this.findLocalButton)
+            .then(() => {
+                this.findLocalButton.click();
+            })
+    }
+
+    chooseFindLocalProductCapacity(capacity) {
+        let findLocalProductCapacityButton = element(by.xpath(format(this.findLocalProductCapacityButtonXpath, capacity)));
+        return wait.waitElementToBeClickable(findLocalProductCapacityButton)
+            .then(() => {
+                actions.moveAndClick(findLocalProductCapacityButton);
+            });
+    }
+
+    getFindLocalProductCapacity(capacity) {
+        let findLocalProductCapacity = element(by.xpath(format(this.findLocalProductCapacityXpath, capacity)))
+        return wait.waitElementToBeVisible(findLocalProductCapacity)
+            .then(() => {
+                return findLocalProductCapacity.getText();
             })
     }
 
